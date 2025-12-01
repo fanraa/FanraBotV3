@@ -1,6 +1,6 @@
 // core/index.js
-// FanraBot Core Engine — Fix Menu & ListPlugins
-// =============================================
+// FanraBot Core Engine — Strict Mode (Owner Limited)
+// ==================================================
 import fsPromises from 'fs/promises';
 import fs from 'fs';
 import path from 'path';
@@ -194,9 +194,7 @@ export class BotCoreEngine {
           this.settings[key] = value;
           this.saveData(true); 
       },
-      // --- [FIX] INI YANG HILANG SEHINGGA MENU ERROR ---
       listPlugins: () => this.registry.list(), 
-      // -------------------------------------------------
     };
   }
 
@@ -216,17 +214,36 @@ export class BotCoreEngine {
             ctx.command = cmdName;
             ctx.args = parts.slice(1);
             
+            // Log hanya jika command diizinkan lewat
+            // this.logger.info('CMD', ...); // Dipindah ke bawah setelah filter
+
+            // === [STRICT MODE FILTER] ===
+            // Definisi: Saat Mode OFF, hanya command ini yang boleh lewat (bahkan untuk Owner)
+            const rescueCmds = ['setting', 'settings', 'mode', 'setup'];
+
+            // 1. Cek Apakah Mode Group sedang OFF?
+            if (ctx.isGroup && this.settings.groupMode === false) {
+                // Jika Owner, cek apakah commandnya 'setting'?
+                if (isOwner) {
+                    if (!rescueCmds.includes(cmdName)) return; // Blokir .ping, .menu, dll
+                } else {
+                    return; // Blokir Total untuk Member
+                }
+            }
+
+            // 2. Cek Apakah Mode Private sedang OFF?
+            if (!ctx.isGroup && this.settings.privateMode === false) {
+                if (isOwner) {
+                    if (!rescueCmds.includes(cmdName)) return; 
+                } else {
+                    return;
+                }
+            }
+            // ============================
+
             this.logger.info('CMD', `${cmdName} | ${ctx.pushName} | ${isOwner ? 'OWNER' : 'USER'}`);
 
-            // === GLOBAL FILTER ===
-            // CATATAN: Owner selalu di-bypass agar tidak terkunci
             if (!isOwner) {
-                // Jika Group Mode OFF -> Member Grup tidak bisa pakai bot
-                if (ctx.isGroup && !this.settings.groupMode) return;
-                // Jika Private Mode OFF -> Member PC tidak bisa pakai bot
-                if (!ctx.isGroup && !this.settings.privateMode) return;
-                
-                // Cooldown
                 const cdKey = `${ctx.senderNumber}:${cmdName}`;
                 const now = Date.now();
                 if (this.cooldowns.has(cdKey) && now - this.cooldowns.get(cdKey) < 2000) return;
@@ -268,7 +285,7 @@ export class BotCoreEngine {
 
   async start() {
     console.clear();
-    this.logger.info('CORE', 'Starting Engine v4.6 (Menu Fix)...');
+    this.logger.info('CORE', 'Starting Engine v4.8 (Super Strict)...');
     await this.config.load();
     await this.loadDatabases(); 
     await this.loadPlugins();
