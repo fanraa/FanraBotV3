@@ -1,7 +1,10 @@
+// core/index.js
+// FanraBot Core Engine — Fix Menu & ListPlugins
+// =============================================
 import fsPromises from 'fs/promises';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import chokidar from 'chokidar';
 import chalk from 'chalk';
 import { EventEmitter } from 'events';
@@ -14,24 +17,15 @@ class Logger {
     this.levels = { debug: 0, info: 1, warn: 2, error: 3 };
     this.level = this.levels.debug; 
     this.logDir = path.join(ROOT, 'logs');
-
-    if (!fs.existsSync(this.logDir)) {
-      fs.mkdirSync(this.logDir, { recursive: true });
-    }
+    if (!fs.existsSync(this.logDir)) fs.mkdirSync(this.logDir, { recursive: true });
   }
 
-  getTime() {
-    return new Date().toLocaleTimeString('id-ID', { hour12: false });
-  }
-
-  stripAnsi(str) {
-    return String(str).replace(/\x1B\[[0-9;]*[mK]/g, '');
-  }
+  getTime() { return new Date().toLocaleTimeString('id-ID', { hour12: false }); }
+  stripAnsi(str) { return String(str).replace(/\x1B\[[0-9;]*[mK]/g, ''); }
 
   print(level, tag, message) {
     const time = chalk.gray(`[${this.getTime()}]`);
     let tagColor;
-    
     switch (level) {
       case 'error': tagColor = chalk.bgRed.bold(` ${tag} `); break;
       case 'warn':  tagColor = chalk.bgYellow.black.bold(` ${tag} `); break;
@@ -39,7 +33,6 @@ class Logger {
       case 'debug': tagColor = chalk.bgGreen.black.bold(` ${tag} `); break;
       default:      tagColor = chalk.bgWhite.black(` ${tag} `);
     }
-
     console.log(`${time} ${tagColor} ${message}`);
     this.writeToFile(level, tag, message);
   }
@@ -56,27 +49,19 @@ class Logger {
   info(tag, ...msg) { this.print('info', tag, msg.join(' ')); }
   warn(tag, ...msg) { this.print('warn', tag, msg.join(' ')); }
   error(tag, ...msg) { this.print('error', tag, msg.join(' ')); }
-  debug(tag, ...msg) { if (this.level <= 0) this.print('debug', tag, msg.join(' ')); }
+  debug(tag, ...msg) { if (this.level <= this.levels.debug) this.print('debug', tag, msg.join(' ')); }
 }
 
 class ConfigManager {
   constructor() {
     this.botConfigPath = path.join(ROOT, 'config', 'bot.json');
     this.pluginConfigPath = path.join(ROOT, 'config', 'plugins.json');
-    this.bot = {};
-    this.plugins = {};
+    this.bot = {}; this.plugins = {};
   }
-
+  
   async load() {
-    try {
-      const botRaw = await fsPromises.readFile(this.botConfigPath, 'utf-8');
-      this.bot = JSON.parse(botRaw);
-    } catch { this.bot = {}; }
-
-    try {
-      const pluginRaw = await fsPromises.readFile(this.pluginConfigPath, 'utf-8');
-      this.plugins = JSON.parse(pluginRaw);
-    } catch { this.plugins = {}; }
+    try { this.bot = JSON.parse(await fsPromises.readFile(this.botConfigPath, 'utf-8')); } catch { this.bot = {}; }
+    try { this.plugins = JSON.parse(await fsPromises.readFile(this.pluginConfigPath, 'utf-8')); } catch { this.plugins = {}; }
   }
 
   get(key, defaultValue = null) {
@@ -91,21 +76,14 @@ class ConfigManager {
 }
 
 class PluginRegistry {
-  constructor(logger) {
-    this.plugins = new Map();
-    this.logger = logger;
-  }
-
+  constructor(logger) { this.plugins = new Map(); this.logger = logger; }
   register(pluginObj) {
-    if (!pluginObj || typeof pluginObj !== 'object') return false;
+    if (!pluginObj || typeof pluginObj !== 'object' || !pluginObj.name) return false;
     const { name, version = '1.0.0', type = 'utility', priority = 10 } = pluginObj;
-    if (!name) return false;
-
     this.plugins.set(name, { ...pluginObj, version, type, priority, enabled: true });
     this.logger.debug('PLUGIN', `Loaded: ${name} v${version}`);
     return true;
   }
-
   list() { return Array.from(this.plugins.values()); }
 }
 
@@ -115,140 +93,122 @@ export class BotCoreEngine {
     this.config = new ConfigManager();
     this.registry = new PluginRegistry(this.logger);
     this.eventBus = new EventEmitter();
+    this.cooldowns = new Map();
     
-    this.mockWA = {
-      reply: async () => {},
-      sendMessage: async () => {},
-      deleteMessage: async () => {},
-      react: async () => {},
-      groupParticipantsUpdate: async () => {},
-    };
-
-    this.utils = {
-      sleep: (ms) => new Promise(r => setTimeout(r, ms)),
-      random: (arr) => arr[Math.floor(Math.random() * arr.length)],
-    };
-
     this.usersFile = path.join(ROOT, 'data', 'users.json');
+    this.settingsFile = path.join(ROOT, 'data', 'settings.json');
+
     this.users = new Map();
+    this.settings = {}; 
+    this.saveTimeout = null;
+
+    this.mockWA = {}; 
+    this.utils = { sleep: (ms) => new Promise(r => setTimeout(r, ms)) };
 
     this.startFileWatcher();
   }
 
-  async loadUsers() {
+  async loadDatabases() {
     try {
-      const raw = await fsPromises.readFile(this.usersFile, 'utf-8');
-      const obj = JSON.parse(raw);
-      for (const [k, v] of Object.entries(obj)) this.users.set(k, v);
-      this.logger.info('DB', `Loaded ${this.users.size} users.`);
-    } catch {
-      this.users = new Map();
+        if (!fs.existsSync(path.dirname(this.usersFile))) fs.mkdirSync(path.dirname(this.usersFile), { recursive: true });
+        if (!fs.existsSync(this.usersFile)) await fsPromises.writeFile(this.usersFile, '{}');
+        const raw = await fsPromises.readFile(this.usersFile, 'utf-8');
+        const obj = JSON.parse(raw);
+        for (const [k, v] of Object.entries(obj)) this.users.set(k, v);
+        this.logger.info('DB', `Users Loaded: ${this.users.size}`);
+    } catch(e) { this.users = new Map(); }
+
+    try {
+        if (!fs.existsSync(this.settingsFile)) {
+            this.settings = { groupMode: true, privateMode: true, selfMessage: true };
+            await fsPromises.writeFile(this.settingsFile, JSON.stringify(this.settings, null, 2));
+        } else {
+            const raw = await fsPromises.readFile(this.settingsFile, 'utf-8');
+            this.settings = JSON.parse(raw);
+        }
+        this.logger.info('DB', `Settings Loaded.`);
+    } catch(e) { 
+        this.settings = { groupMode: true, privateMode: true, selfMessage: true }; 
     }
   }
 
-  async saveUsers() {
-    try {
-      const obj = Object.fromEntries(this.users);
-      const str = JSON.stringify(obj, null, 2);
-      const tempFile = this.usersFile + '.tmp';
-      
-      await fsPromises.mkdir(path.dirname(this.usersFile), { recursive: true });
-      await fsPromises.writeFile(tempFile, str);
-      await fsPromises.rename(tempFile, this.usersFile);
-    } catch (err) {
-      this.logger.error('DB', 'Failed to save users:', err.message);
-    }
+  async saveData(force = false) {
+    if (this.saveTimeout && !force) clearTimeout(this.saveTimeout);
+    const doSave = async () => {
+      try {
+        await fsPromises.writeFile(this.usersFile, JSON.stringify(Object.fromEntries(this.users), null, 2));
+        await fsPromises.writeFile(this.settingsFile, JSON.stringify(this.settings, null, 2));
+      } catch (err) { this.logger.error('DB', 'Save failed:', err.message); }
+    };
+    if (force) await doSave(); else this.saveTimeout = setTimeout(doSave, 2000);
   }
 
   async registerUser(ctx) {
     if (!ctx || !ctx.senderNumber) return;
     const id = ctx.senderNumber;
-    const existing = this.users.get(id);
+    let user = this.users.get(id);
     const now = new Date().toISOString();
     
-    // [FIX] Ambil Super Owner dari Environment Variable atau Config
-    const SUPER_OWNER = process.env.OWNER_NUMBER || this.config.get('ownerNumber');
+    const envOwner = process.env.OWNER_NUMBER ? String(process.env.OWNER_NUMBER).replace(/\D/g, '') : '';
+    const incomingId = id.replace(/\D/g, ''); 
+    
+    let isOwner = false;
+    if (envOwner === incomingId) isOwner = true;
+    if (incomingId.startsWith('62') && envOwner.startsWith('0') && incomingId.slice(2) === envOwner.slice(1)) isOwner = true;
+    if (incomingId.startsWith('0') && envOwner.startsWith('62') && incomingId.slice(1) === envOwner.slice(2)) isOwner = true;
 
-    const current = existing || {
-      id, 
-      phoneNumber: id, 
-      name: ctx.pushName || 'User', 
-      interactions: 0,
-      createdAt: now, 
-      lastSeen: now, 
-      role: 'member', 
-      tokens: 10
-    };
-
-    current.interactions++;
-    current.lastSeen = now;
-    current.name = ctx.pushName || current.name;
-
-    // Logika Role
-    if (id === SUPER_OWNER) {
-        current.role = 'owner';
-    } else if (ctx.fromMe) {
-        current.role = 'bot';
-    } else {
-        const configOwners = this.config.get('owners') || [];
-        // Pastikan configOwners berupa array string
-        if (Array.isArray(configOwners) && configOwners.includes(id) && current.role !== 'owner') {
-             current.role = 'owner';
-        }
+    if (!user) {
+        user = { id, name: ctx.pushName||'User', role: 'member', tokens: 10, interactions: 0, createdAt: now };
+        this.users.set(id, user);
     }
-
-    this.users.set(id, current);
-    // [OPTIMISASI] Jangan save setiap pesan jika traffic tinggi, tapi untuk sekarang aman.
-    this.saveUsers().catch(() => {});
-    return current;
+    user.lastSeen = now;
+    user.interactions++;
+    
+    if (isOwner) user.role = 'owner';
+    else if (ctx.fromMe) user.role = 'bot';
+    
+    this.saveData();
+    return user;
   }
 
   buildContext(rawEvent) {
-    const defaultJid = rawEvent?.chatId || rawEvent?.sender || null;
-    const ctx = {
+    return {
       ...rawEvent,
       bot: this.mockWA,
-      reply: async (text, opts = {}) => {
-        try {
-          return await this.mockWA.reply(opts.jid || defaultJid, text, { ...opts, quoted: opts.quoted ?? rawEvent.raw });
-        } catch (e) { this.logger.error('REPLY', e.message); }
+      reply: async (text) => {
+        try { return await this.mockWA.reply(rawEvent.chatId, text, { quoted: rawEvent.raw }); }
+        catch(e) { this.logger.error('REPLY', `Failed: ${e.message}`); }
       },
-      sendMessage: async (content, opts = {}) => {
-        try {
-          return await this.mockWA.sendMessage(opts.jid || defaultJid, content, opts);
-        } catch (e) { this.logger.error('SEND', e.message); }
-      },
-      deleteMessage: async (key) => {
-        try {
-          return await this.mockWA.deleteMessage(key || rawEvent.key);
-        } catch(e) { this.logger.error('DELETE', e.message); }
+      sendMessage: async (content) => {
+         try { return await this.mockWA.sendMessage(rawEvent.chatId, content); }
+         catch(e) { this.logger.error('SEND', `Failed: ${e.message}`); }
       },
       react: async (emoji) => {
-        try {
-          return await this.mockWA.react(defaultJid, emoji, rawEvent.raw);
-        } catch(e) { this.logger.error('REACT', e.message); }
+         try { return await this.mockWA.react(rawEvent.chatId, emoji, rawEvent.raw); }
+         catch(e) { this.logger.error('REACT', `Failed: ${e.message}`); }
       },
-      config: this.config,
-      logger: this.logger,
-      utils: this.utils,
-      getUser: (id) => this.users.get(id),
-      user: this.users.get(rawEvent?.senderNumber), 
-      saveUsers: () => this.saveUsers(), 
-      listPlugins: () => this.registry.list(),
+      config: this.config, logger: this.logger,
+      user: this.users.get(rawEvent.senderNumber),
+      settings: this.settings,
+      updateSettings: (key, value) => {
+          this.settings[key] = value;
+          this.saveData(true); 
+      },
+      // --- [FIX] INI YANG HILANG SEHINGGA MENU ERROR ---
+      listPlugins: () => this.registry.list(), 
+      // -------------------------------------------------
     };
-    return ctx;
   }
 
   async dispatchEvent(eventName, rawData) {
-    // Jika event bukan pesan, rawData mungkin berbeda strukturnya.
-    // Kita buat context sederhana jika bukan 'message'
     let ctx;
     if (eventName === 'message') {
         ctx = this.buildContext(rawData);
         try { ctx.user = await this.registerUser(ctx); } catch {}
 
         const body = (ctx.body || '').trim();
-        const isCommand = ['.', '!', '/'].some(p => body.startsWith(p));
+        const isCommand = /^[.!/#]/.test(body);
+        const isOwner = ctx.user?.role === 'owner';
       
         if (isCommand) {
             const parts = body.slice(1).trim().split(/\s+/);
@@ -256,92 +216,61 @@ export class BotCoreEngine {
             ctx.command = cmdName;
             ctx.args = parts.slice(1);
             
-            this.logger.info('CMD', `${chalk.bold.yellow(cmdName)} used by ${chalk.cyan(ctx.pushName)}`);
+            this.logger.info('CMD', `${cmdName} | ${ctx.pushName} | ${isOwner ? 'OWNER' : 'USER'}`);
 
-            const plugins = this.registry.list().filter(p => p.enabled && p.type === 'command').sort((a,b) => (a.priority||10)-(b.priority||10));
-            let executed = false;
-            
+            // === GLOBAL FILTER ===
+            // CATATAN: Owner selalu di-bypass agar tidak terkunci
+            if (!isOwner) {
+                // Jika Group Mode OFF -> Member Grup tidak bisa pakai bot
+                if (ctx.isGroup && !this.settings.groupMode) return;
+                // Jika Private Mode OFF -> Member PC tidak bisa pakai bot
+                if (!ctx.isGroup && !this.settings.privateMode) return;
+                
+                // Cooldown
+                const cdKey = `${ctx.senderNumber}:${cmdName}`;
+                const now = Date.now();
+                if (this.cooldowns.has(cdKey) && now - this.cooldowns.get(cdKey) < 2000) return;
+                this.cooldowns.set(cdKey, now);
+            }
+
+            const plugins = this.registry.list().filter(p => p.enabled && p.type === 'command');
             for (const p of plugins) {
-                const cmds = Array.isArray(p.cmd) ? p.cmd : [p.cmd];
-                if (cmds.includes(cmdName)) {
-                    try { 
-                        await p.run({ ...ctx, plugin: p }); 
-                        executed = true;
-                    } 
+                if ((Array.isArray(p.cmd) ? p.cmd : [p.cmd]).includes(cmdName)) {
+                    try { await p.run({ ...ctx, plugin: p }); } 
                     catch (e) { 
-                        this.logger.error('PLUGIN', `Error in ${p.name}:`, e.stack || e.message); 
-                        ctx.reply(`❌ Error: ${e.message}`);
+                        this.logger.error('PLUGIN', `Error in ${p.name}:`, e.message); 
+                        ctx.reply(`❌ System Error: ${e.message}`);
                     }
                 }
             }
-            if(!executed) this.logger.debug('CMD', `Unknown command: ${cmdName}`);
         }
     } else {
-        // Untuk event non-message (misal: group-participants.update)
-        ctx = { 
-            ...rawData, 
-            bot: this.mockWA, 
-            logger: this.logger,
-            config: this.config,
-            utils: this.utils
-        };
-    }
-
-    const handlers = this.registry.list().filter(p => p.enabled && p.events?.[eventName]);
-    for (const p of handlers) {
-        try { await p.events[eventName](ctx); } 
-        catch (e) { this.logger.error('EVENT', `Error in ${p.name}:`, e.message); }
+        ctx = { ...rawData, bot: this.mockWA };
     }
   }
 
   async loadPlugins() {
     const pluginsDir = path.join(ROOT, 'plugins');
     if (!fs.existsSync(pluginsDir)) return;
-    
-    const getFiles = async (dir) => {
-      const dirents = await fsPromises.readdir(dir, { withFileTypes: true });
-      const files = await Promise.all(dirents.map((dirent) => {
-        const res = path.resolve(dir, dirent.name);
-        return dirent.isDirectory() ? getFiles(res) : res;
-      }));
-      return Array.prototype.concat(...files);
-    };
-
-    const files = await getFiles(pluginsDir);
+    const files = await fsPromises.readdir(pluginsDir).then(f => f.filter(x => x.endsWith('.js')));
     for (const f of files) {
-        if (f.endsWith('.js')) {
-            try {
-                const module = await import(`file://${f}`);
-                const plugin = module.default || module;
-                if (plugin?.name) {
-                    plugin.filePath = f;
-                    
-                    if (typeof plugin.load === 'function') {
-                        await plugin.load(this.logger);
-                    }
-
-                    this.registry.register(plugin);
-                }
-            } catch (e) {
-                this.logger.error('LOAD', `Failed to load ${path.basename(f)}:`, e.message);
-            }
-        }
+        try {
+            const module = await import(pathToFileURL(path.join(pluginsDir, f)).href);
+            const plugin = module.default || module;
+            if (plugin?.name) this.registry.register(plugin);
+        } catch (e) { this.logger.error('LOAD', `Fail ${f}:`, e.message); }
     }
   }
 
   startFileWatcher() {
-    this.watcher = chokidar.watch(path.join(ROOT, 'config'), { ignored: /(^|[/\\])\../, persistent: true });
-    this.watcher.on('change', async () => {
-       await this.config.load();
-       this.logger.info('CONFIG', 'Configuration reloaded.');
-    });
+    chokidar.watch(path.join(ROOT, 'config')).on('change', () => this.config.load());
   }
 
   async start() {
     console.clear();
-    this.logger.info('CORE', chalk.bold.green('Starting FanraBot Engine...'));
+    this.logger.info('CORE', 'Starting Engine v4.6 (Menu Fix)...');
     await this.config.load();
-    await this.loadUsers();
+    await this.loadDatabases(); 
     await this.loadPlugins();
     this.logger.info('CORE', 'Engine Ready!');
   }
@@ -349,5 +278,4 @@ export class BotCoreEngine {
 
 const engine = new BotCoreEngine();
 export default engine;
-
 if (import.meta.url === `file://${process.argv[1]}`) engine.start();

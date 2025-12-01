@@ -3,9 +3,9 @@
     "id": "6283172993747",
     "phoneNumber": "6283172993747",
     "name": "User",
-    "interactions": 25,
+    "interactions": 32,
     "createdAt": "2025-11-30T13:01:43.290Z",
-    "lastSeen": "2025-11-30T13:19:35.361Z",
+    "lastSeen": "2025-12-01T06:43:18.488Z",
     "role": "bot",
     "tokens": 10
   },
@@ -53,9 +53,9 @@
     "id": "263930622525541",
     "phoneNumber": "263930622525541",
     "name": "🫣",
-    "interactions": 17,
+    "interactions": 25,
     "createdAt": "2025-11-30T13:02:02.486Z",
-    "lastSeen": "2025-11-30T13:19:27.070Z",
+    "lastSeen": "2025-12-01T08:00:16.437Z",
     "role": "member",
     "tokens": 10
   },
@@ -73,9 +73,9 @@
     "id": "88790244827277",
     "phoneNumber": "88790244827277",
     "name": "wylonalona",
-    "interactions": 1,
+    "interactions": 3,
     "createdAt": "2025-11-30T13:02:26.304Z",
-    "lastSeen": "2025-11-30T13:02:26.304Z",
+    "lastSeen": "2025-12-01T07:50:06.892Z",
     "role": "member",
     "tokens": 10
   },
@@ -83,19 +83,19 @@
     "id": "151505441148965",
     "phoneNumber": "151505441148965",
     "name": "rap",
-    "interactions": 2,
+    "interactions": 3,
     "createdAt": "2025-11-30T13:02:33.193Z",
-    "lastSeen": "2025-11-30T13:15:11.361Z",
+    "lastSeen": "2025-12-01T07:48:44.973Z",
     "role": "member",
     "tokens": 10
   },
   "6790494347481": {
     "id": "6790494347481",
     "phoneNumber": "6790494347481",
-    "name": "User",
-    "interactions": 14,
+    "name": "fanra",
+    "interactions": 72,
     "createdAt": "2025-11-30T13:02:39.301Z",
-    "lastSeen": "2025-11-30T13:19:36.883Z",
+    "lastSeen": "2025-12-01T07:48:36.615Z",
     "role": "owner",
     "tokens": 10,
     "antilink": {
@@ -117,10 +117,10 @@
     "id": "93845656195169",
     "phoneNumber": "93845656195169",
     "name": "Fanrabot",
-    "interactions": 6,
+    "interactions": 59,
     "createdAt": "2025-11-30T13:03:22.629Z",
-    "lastSeen": "2025-11-30T13:11:48.534Z",
-    "role": "member",
+    "lastSeen": "2025-12-01T07:59:56.991Z",
+    "role": "bot",
     "tokens": 10
   },
   "137666872004636": {
@@ -192,5 +192,114 @@
     "lastSeen": "2025-11-30T13:19:35.969Z",
     "role": "owner",
     "tokens": 10
+  },
+  "245737023656167": {
+    "id": "245737023656167",
+    "phoneNumber": "245737023656167",
+    "name": "Fanrabot",
+    "interactions": 2,
+    "createdAt": "2025-12-01T07:03:56.339Z",
+    "lastSeen": "2025-12-01T07:03:57.563Z",
+    "role": "bot",
+    "tokens": 10
+  },
+  "6288291298977": {
+    "id": "6288291298977",
+    "name": "User",
+    "role": "bot",
+    "tokens": 10,
+    "interactions": 30,
+    "createdAt": "2025-12-01T07:20:57.755Z",
+    "lastSeen": "2025-12-01T07:47:09.619Z"
+  },
+  "207181068632306": {
+    "id": "207181068632306",
+    "name": "Glory-tech",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 5,
+    "createdAt": "2025-12-01T07:27:59.490Z",
+    "lastSeen": "2025-12-01T08:05:38.797Z"
+  },
+  "2208234008618": {
+    "id": "2208234008618",
+    "name": "🖤💫✨🌞💯",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 8,
+    "createdAt": "2025-12-01T07:34:56.943Z",
+    "lastSeen": "2025-12-01T07:55:17.255Z"
+  },
+  "86084180513001": {
+    "id": "86084180513001",
+    "name": "Watermeyonnnn",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 1,
+    "createdAt": "2025-12-01T07:49:08.522Z",
+    "lastSeen": "2025-12-01T07:49:08.522Z"
+  },
+  "11304941170810": {
+    "id": "11304941170810",
+    "name": "Ssss",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 1,
+    "createdAt": "2025-12-01T07:49:25.865Z",
+    "lastSeen": "2025-12-01T07:49:25.865Z"
+  },
+  "99227233439977": {
+    "id": "99227233439977",
+    "name": "Shami ☠️",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 7,
+    "createdAt": "2025-12-01T07:53:29.444Z",
+    "lastSeen": "2025-12-01T08:03:46.908Z"
+  },
+  "81050847985698": {
+    "id": "81050847985698",
+    "name": "apaja",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 2,
+    "createdAt": "2025-12-01T07:56:22.676Z",
+    "lastSeen": "2025-12-01T07:56:45.293Z"
+  },
+  "12962865614957": {
+    "id": "12962865614957",
+    "name": "🇨🇳 _kimin_ 🇺🇿",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 3,
+    "createdAt": "2025-12-01T07:59:53.431Z",
+    "lastSeen": "2025-12-01T08:05:50.532Z"
+  },
+  "144693354569918": {
+    "id": "144693354569918",
+    "name": "Hàmílpóñ",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 2,
+    "createdAt": "2025-12-01T07:59:54.540Z",
+    "lastSeen": "2025-12-01T08:03:17.381Z"
+  },
+  "75712253944032": {
+    "id": "75712253944032",
+    "name": "Kyuki Ameda",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 2,
+    "createdAt": "2025-12-01T08:01:26.557Z",
+    "lastSeen": "2025-12-01T08:01:59.810Z"
+  },
+  "214061170053256": {
+    "id": "214061170053256",
+    "name": "sir roneks",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 1,
+    "createdAt": "2025-12-01T08:02:54.320Z",
+    "lastSeen": "2025-12-01T08:02:54.320Z"
   }
 }
