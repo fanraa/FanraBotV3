@@ -1,49 +1,52 @@
 // plugins/antispam.js
-// 🛡️ ANTI-SPAM (Batch Delete) & ANTI-VIRTEX (Auto Kick Enabled)
-// ==========================================
+// 🛡️ ANTI-SPAM & ANTI-VIRTEX (NO MERCY EDITION)
+// Target: SEMUA (Admin, Owner, Member) - Tanpa Pengecualian
+// =========================================================
 
 // Map untuk menyimpan data spam user
-// Structure: chatId-sender -> { lastMsg, count, msgKeys[], timer }
 const spamMap = new Map();
 
 export default {
   name: "antispam",
-  version: "2.1.0-STRICT",
-  priority: 0, // Jalankan paling awal
+  version: "2.2.0-STRICT",
+  priority: 0, // Wajib dijalankan paling awal sebelum plugin lain
 
   events: {
     message: async (ctx) => {
       try {
         if (!ctx.isGroup || !ctx.body) return;
 
-        const { sender, chatId, body } = ctx;
+        const { sender, chatId, body, isFromMe } = ctx;
+        
+        // Safety: Bot tidak boleh menge-kick dirinya sendiri (akan error API)
+        if (isFromMe) return;
+
         const now = Date.now();
         const keyId = `${chatId}:${sender}`;
 
         // ==========================================
-        // 1. ANTI-VIRTEX / VIRUS (Prioritas Utama)
+        // 1. ANTI-VIRTEX / VIRUS (Langsung Eksekusi)
         // ==========================================
         const isVirtex = 
-          body.length > 10000 || // 1. Teks kepanjangan (Overload buffer)
-          /(.)\1{50,}/.test(body) || // 2. Karakter berulang 50x (Lagging UI)
-          /[\u0300-\u036f]{15,}/.test(body) || // 3. Simbol Zalgo/Setan (Stacking height)
-          /[\u202a-\u202e]/.test(body); // 4. RTL Override (Crash rendering)
+          body.length > 10000 || // Teks kepanjangan
+          /(.)\1{50,}/.test(body) || // Karakter berulang parah
+          /[\u0300-\u036f]{15,}/.test(body) || // Simbol setan/zalgo
+          /[\u202a-\u202e]/.test(body); // Karakter pembalik teks (RTL)
 
         if (isVirtex) {
            ctx.logger.warn('SECURITY', `☣️ VIRTEX detected from ${ctx.pushName}`);
            
-           // A. Hapus pesan virusnya langsung
+           // A. Hapus pesan virus
            await ctx.deleteMessage(ctx.key);
            
-           // B. KICK PELAKU (SUDAH DIAKTIFKAN)
-           // Bot harus jadi Admin agar ini berfungsi
+           // B. KICK PELAKU (Tanpa Pengecualian)
            await ctx.bot.sock.groupParticipantsUpdate(chatId, [sender], 'remove').catch((e)=>{
-               ctx.logger.error('SECURITY', `Failed to kick virtex sender: ${e.message}`);
+               ctx.logger.error('SECURITY', `Gagal kick virtex (Mungkin dia Creator/Bot bukan Admin): ${e.message}`);
            });
            
-           // C. Beritahu Grup
+           // C. Info Grup
            await ctx.sendMessage({ 
-             text: `☣️ @${ctx.senderNumber} *VIRUS DETECTED* \nUser has been kicked and message deleted for safety.`, 
+             text: `☣️ @${ctx.senderNumber} *VIRUS DETECTED* \nUser kicked. No mercy.`, 
              mentions: [sender] 
            });
            return; 
@@ -53,12 +56,8 @@ export default {
         // 2. ANTI-SPAM (Batch Logic)
         // ==========================================
         
-        // Admin Bypass (Admin bebas spam)
-        let groupMeta;
-        try { groupMeta = await ctx.bot.sock.groupMetadata(chatId); } catch { return; }
-        const admins = (groupMeta.participants || []).filter(p => p.admin).map(p => p.id);
-        if (admins.includes(sender)) return; 
-
+        // [MODIFIKASI] Bagian Pengecualian Admin/Owner DIHAPUS DISINI.
+        // Sekarang kode langsung lanjut ke logika hitung spam.
 
         // Ambil data user dari RAM
         let userData = spamMap.get(keyId) || { 
@@ -68,7 +67,8 @@ export default {
             lastTime: 0 
         };
 
-        // Reset jika pesan BEDA atau jeda waktu > 8 detik
+        // Reset hitungan jika pesan BEDA atau jeda waktu > 8 detik
+        // (Artinya kalau ngetik manual pelan-pelan aman, tapi kalau copy-paste cepat kena)
         if (userData.lastMsg !== body || (now - userData.lastTime > 8000)) {
             userData = { 
                 lastMsg: body, 
@@ -77,63 +77,68 @@ export default {
                 lastTime: now 
             };
         } else {
-            // Jika pesan SAMA dan CEPAT
+            // Jika pesan SAMA persis dan CEPAT (< 8 detik)
             userData.count++;
             userData.lastTime = now;
             userData.msgKeys.push(ctx.key); 
         }
 
-        // Update memori
+        // Simpan data terbaru
         spamMap.set(keyId, userData);
 
-        // --- LOGIKA HUKUMAN ---
+        // --- LOGIKA HUKUMAN BERTAHAP ---
 
-        // A. Pesan ke 1-4: BIARKAN (Hanya disimpan di msgKeys)
+        // A. Pesan ke 1-4: Masih Aman
         if (userData.count < 5) {
             return; 
         }
 
-        // B. Pesan ke-5: WARNING + HAPUS DARI AWAL
+        // B. Pesan ke-5: PERINGATAN KERAS + HAPUS PESAN SEBELUMNYA
         if (userData.count === 5) {
-            ctx.logger.warn('SPAM', `⚠️ SPAM WARNING (5x) to ${ctx.pushName} - Batch Deleting...`);
+            ctx.logger.warn('SPAM', `⚠️ SPAM WARNING (5x) to ${ctx.pushName}`);
             
-            // Hapus semua pesan sebelumnya
+            // Bersihkan sampah spam sebelumnya agar grup bersih
             for (const key of userData.msgKeys) {
                 try { await ctx.deleteMessage(key); } catch {}
             }
             
+            // Kosongkan list kunci pesan agar hemat memori
             userData.msgKeys = []; 
             spamMap.set(keyId, userData);
 
             await ctx.sendMessage({
-                text: `⚠️ *ANTI-SPAM WARNING* (@${ctx.senderNumber})\nYou have spammed 5 times.\nPrevious messages deleted.\nNext action: *KICK*.`,
+                text: `⚠️ *ANTI-SPAM WARNING* (@${ctx.senderNumber})\nAnda terdeteksi spam 5x.\nLanjut = *KICK*.`,
                 mentions: [sender]
             });
             return;
         }
 
-        // C. Pesan ke 6-9: HAPUS LANGSUNG
+        // C. Pesan ke 6-9: HAPUS TANPA BABIBU
         if (userData.count > 5 && userData.count < 10) {
             await ctx.deleteMessage(ctx.key);
             return;
         }
 
-        // D. Pesan ke-10: KICK
+        // D. Pesan ke-10: EKSEKUSI MATI (KICK)
         if (userData.count >= 10) {
-            ctx.logger.warn('SPAM', `🚫 EXTREME SPAM (10x) from ${ctx.pushName} -> KICK`);
+            ctx.logger.warn('SPAM', `🚫 KICKING SPAMMER: ${ctx.pushName} (${ctx.senderNumber})`);
             
+            // Hapus pesan terakhir
             await ctx.deleteMessage(ctx.key);
             
             await ctx.sendMessage({ 
-                text: `🚫 *LIMIT EXCEEDED*\nGoodbye @${ctx.senderNumber}! 👋`,
+                text: `🚫 *SPAM LIMIT EXCEEDED*\nAturan adalah aturan. Selamat tinggal @${ctx.senderNumber}. 👋`,
                 mentions: [sender]
             });
             
-            // Eksekusi Kick
-            await ctx.bot.sock.groupParticipantsUpdate(chatId, [sender], 'remove').catch(() => {
-                 ctx.reply('❌ Failed to kick (Bot not Admin?)');
+            // Eksekusi Kick (Tanpa pandang bulu)
+            await ctx.bot.sock.groupParticipantsUpdate(chatId, [sender], 'remove').catch((e) => {
+                 // Error biasanya terjadi jika target adalah Pembuat Grup (Creator)
+                 // Karena WhatsApp melarang Admin (Bot) menge-kick Creator.
+                 ctx.reply(`❌ Gagal Kick: Target mungkin Creator Grup atau Bot bukan Admin.`);
             });
             
+            // Hapus data spammer dari memori
             spamMap.delete(keyId);
             return;
         }

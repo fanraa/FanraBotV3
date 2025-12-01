@@ -1,30 +1,32 @@
+// Premium Ping Command
+// Clean, professional, and English-based version
+
+import os from 'os';
+
 export default {
-  name: "ping",
-  cmd: ["ping", "speed", "p"],
-  type: "command",
-  priority: 1,
+    name: "ping",
+    cmd: ["ping", "speed", "p"],
+    type: "command",
+    priority: 1,
 
-  run: async (ctx) => {
-    // Hitung kecepatan respon
-    const start = Date.now();
-    
-    // Kirim pesan awal (biasanya tidak perlu react dulu biar cepat)
-    await ctx.react("⚡");
+    run: async (ctx) => {
+        const start = Date.now();
+        await ctx.react("⚡");
 
-    const latensi = Date.now() - start;
-    
-    // Kirim info server
-    const os = await import('os');
-    const cpus = os.cpus().length;
-    const ram = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
-    
-    const text = `
-🚀 *PONG!*
-⚡ Speed: ${latensi}ms
-💻 RAM: ${ram} GB
-🖥️ CPU: ${cpus} Core
-`.trim();
+        const latency = Date.now() - start;
+        const cpuCores = os.cpus().length;
+        const ramTotal = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
 
-    await ctx.reply(text);
-  }
+        const msg = `
+🚀 *PING STATUS*
+
+⚡ *Latency:* ${latency}ms
+🖥️ *CPU Cores:* ${cpuCores}
+💾 *Total RAM:* ${ramTotal} GB
+
+System is running normally.
+        `.trim();
+
+        await ctx.reply(msg);
+    }
 };

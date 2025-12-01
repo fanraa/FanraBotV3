@@ -1,3 +1,6 @@
+// plugins/sticker.js
+// Enhanced Sticker Generator — Image Only Mode (Video is Premium)
+// ===============================================================
 import { Sticker, StickerTypes } from 'wa-sticker-formatter';
 import { downloadContentFromMessage } from '@whiskeysockets/baileys';
 
@@ -9,64 +12,66 @@ export default {
 
     run: async (ctx) => {
         try {
-            const msg = ctx.raw?.message;
-            // Deteksi tipe pesan: Gambar/Video langsung atau Reply
-            const isImage = msg?.imageMessage;
-            const isVideo = msg?.videoMessage;
+            const { raw, reply, react, sendMessage, args, user, config } = ctx;
+            const msg = raw?.message;
+            const quoted = msg?.extendedTextMessage?.contextInfo?.quotedMessage;
+
+            const isImage = msg?.imageMessage || quoted?.imageMessage;
+            const isVideo = msg?.videoMessage || quoted?.videoMessage;
             
-            const quoted = ctx.raw?.message?.extendedTextMessage?.contextInfo?.quotedMessage;
-            const isQuotedImage = quoted?.imageMessage;
-            const isQuotedVideo = quoted?.videoMessage;
-
-            if (!isImage && !isQuotedImage && !isVideo && !isQuotedVideo) {
-                return ctx.reply("❌ Kirim gambar/video dengan caption *.s* atau reply gambar/video dengan *.s*");
+            // 1. Cek Media
+            if (!isImage && !isVideo) {
+                return reply("❌ *No Media Found*.\nSend an *image/video* with caption *.s* or reply an image/video using *.s*");
             }
 
-            await ctx.react("⏳");
+            await react("⏳");
 
-            // Tentukan tipe media dan pesan yang mau didownload
-            let mediaType;
-            let mediaMessage;
+            const mediaType = isImage ? "image" : "video";
+            const mediaMessage = msg?.imageMessage || quoted?.imageMessage || msg?.videoMessage || quoted?.videoMessage;
 
-            if (isImage || isQuotedImage) {
-                mediaType = 'image';
-                mediaMessage = isImage ? isImage : isQuotedImage;
-            } else {
-                mediaType = 'video';
-                mediaMessage = isVideo ? isVideo : isQuotedVideo;
+            // 2. [NEW LOGIC] BLOCK VIDEO (PREMIUM ACCESS ONLY)
+            if (mediaType === "video") {
+                await react("🔒");
+                return reply(`
+⚠️ Only For Premium Users`.trim());
             }
+            
+            // --- HANYA LANJUT JIKA MEDIA ADALAH IMAGE ---
 
-            // Download Stream
+            // 3. Custom Pack Name Logic
+            const defaultPackName = config.get("botName") || "FanraBot";
+            const customPack = args.join(' ').trim();
+            const packName = customPack || defaultPackName;
+            const authorName = user?.name || "User";
+
+            // Download media (Image only now)
             const stream = await downloadContentFromMessage(mediaMessage, mediaType);
             let buffer = Buffer.from([]);
-            for await (const chunk of stream) {
-                buffer = Buffer.concat([buffer, chunk]);
+            for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
+
+            if (buffer.length > 5 * 1024 * 1024) {
+                 return reply("❌ Image is too large (Max 5MB).");
             }
 
-            // Cek ukuran video (max 10MB)
-            if (mediaType === 'video' && buffer.length > 10 * 1024 * 1024) {
-                return ctx.reply("❌ Video terlalu besar (Max 10MB).");
-            }
-
-            // Buat Stiker
+            // Create sticker (Image)
             const sticker = new Sticker(buffer, {
-                pack: ctx.config.get("botName") || 'FanraBot', 
-                author: ctx.user?.name || 'User',              
-                type: StickerTypes.CROPPED, // <--- UBAH DI SINI (Agar jadi kotak 1x1 penuh)
-                categories: ['🤩', '🎉'],
-                quality: 60, // Kualitas gambar
-                background: 'transparent'
+                pack: packName,
+                author: authorName,
+                type: StickerTypes.FULL,
+                categories: ["🎉", "🤩"],
+                quality: 60,
+                background: "transparent",
             });
 
-            const stikerBuffer = await sticker.toBuffer();
+            const stickerBuffer = await sticker.toBuffer();
 
-            // Kirim Stiker
-            await ctx.sendMessage({ sticker: stikerBuffer }, { quoted: ctx.raw });
-            await ctx.react("✅");
+            await sendMessage({ sticker: stickerBuffer }, { quoted: raw });
+            await react("✅");
 
-        } catch (e) {
-            ctx.logger.error('STICKER', `Error: ${e.message}`);
-            await ctx.reply(`❌ Gagal membuat stiker: ${e.message}`);
+        } catch (error) {
+            ctx.logger.error("STICKER", `Error: ${error.message}`);
+            // Jika ada error pada gambar statis
+            await ctx.reply(`❌ *Sticker Failed:*\n_Reason: ${error.message}_`);
         }
     }
 };

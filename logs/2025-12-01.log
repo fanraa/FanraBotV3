@@ -1079,3 +1079,323 @@ Did you mean to import "../core/index.js"?
 [2025-12-01T07:47:37.081Z] [INFO] [CMD] ping | fanra | OWNER
 [2025-12-01T07:48:17.162Z] [INFO] [CMD] setting | fanra | OWNER
 [2025-12-01T07:48:36.617Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:23:19.506Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:23:19.527Z] [INFO] [DB] Users Loaded: 31
+[2025-12-01T09:23:19.532Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:23:19.683Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:23:19.685Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:23:19.688Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:23:20.083Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:23:20.088Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:23:20.093Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:23:20.097Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:23:20.100Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:23:20.104Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:23:20.108Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:23:20.115Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:23:20.122Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:23:20.129Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:23:20.133Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:23:20.683Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:23:20.686Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:23:20.687Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:24:14.013Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:24:54.491Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:25:34.857Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:25:49.200Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:26:23.252Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:26:34.018Z] [INFO] [CMD] runtime | fanra | OWNER
+[2025-12-01T09:27:27.307Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:27:27.327Z] [INFO] [DB] Users Loaded: 31
+[2025-12-01T09:27:27.329Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:27:27.481Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:27:27.484Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:27:27.487Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:27:27.829Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:27:27.833Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:27:27.838Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:27:27.841Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:27:27.845Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:27:27.847Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:27:27.850Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:27:27.854Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:27:27.858Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:27:27.861Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:27:27.864Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:27:28.170Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:27:28.173Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:27:28.174Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:27:30.626Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:27:51.736Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:28:02.303Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:28:18.803Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:28:31.528Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:28:31.545Z] [INFO] [DB] Users Loaded: 31
+[2025-12-01T09:28:31.547Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:28:31.681Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:28:31.684Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:28:31.688Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:28:31.940Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:28:31.943Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:28:31.948Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:28:31.951Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:28:31.953Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:28:31.956Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:28:31.958Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:28:31.961Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:28:31.964Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:28:31.969Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:28:31.971Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:28:32.192Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:28:32.194Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:28:32.195Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:28:34.001Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:28:38.117Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:28:58.394Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:29:22.509Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:29:22.526Z] [INFO] [DB] Users Loaded: 32
+[2025-12-01T09:29:22.537Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:29:22.679Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:29:22.682Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:29:22.684Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:29:22.939Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:29:22.947Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:29:22.954Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:29:22.956Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:29:22.961Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:29:22.964Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:29:22.966Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:29:22.969Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:29:22.971Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:29:22.973Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:29:22.976Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:29:23.219Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:29:23.222Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:29:23.223Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:29:25.176Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:29:27.493Z] [INFO] [CMD] setting | fanra | OWNER
+[2025-12-01T09:30:36.179Z] [INFO] [CMD] menu | fanra | OWNER
+[2025-12-01T09:30:36.649Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:30:36.770Z] [INFO] [MENU] Forwarded-style menu sent to fanra
+[2025-12-01T09:30:45.617Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:31:09.284Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:31:09.300Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:31:09.301Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:31:09.444Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:31:09.448Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:31:09.451Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:31:09.758Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:31:09.762Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:31:09.766Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:31:09.769Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:31:09.771Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:31:09.774Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:31:09.776Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:31:09.780Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:31:09.782Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:31:09.787Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:31:09.790Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:31:10.105Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:31:10.108Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:31:10.109Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:31:12.728Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:31:20.793Z] [INFO] [CMD] runtime | fanra | OWNER
+[2025-12-01T09:32:12.437Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:34:21.197Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:34:21.217Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:34:21.218Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:34:21.355Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:34:21.358Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:34:21.361Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:34:21.672Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:34:21.676Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:34:21.680Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:34:21.683Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:34:21.686Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:34:21.689Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:34:21.691Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:34:21.694Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:34:21.698Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:34:21.701Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:34:21.703Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:34:21.988Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:34:21.990Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:34:21.991Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:34:25.541Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:35:29.659Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T09:42:23.442Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:42:23.469Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:42:23.470Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:42:23.654Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:42:23.658Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:42:23.661Z] [DEBUG] [PLUGIN] Loaded: antispam v2.1.0-STRICT
+[2025-12-01T09:42:24.069Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:42:24.076Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:42:24.083Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:42:24.087Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:42:24.091Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:42:24.094Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:42:24.097Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:42:24.100Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:42:24.104Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:42:24.108Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:42:24.111Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:42:24.482Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:42:24.484Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:42:24.485Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:42:26.976Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:43:07.051Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T09:43:07.075Z] [INFO] [CMD] ping | fanra | OWNER
+[2025-12-01T09:43:07.158Z] [INFO] [CMD] menu | fanra | OWNER
+[2025-12-01T09:43:07.556Z] [INFO] [MENU] Forwarded-style menu sent to fanra
+[2025-12-01T09:43:39.531Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:43:39.553Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:43:39.555Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:43:39.685Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:43:39.688Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:43:39.690Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:43:39.962Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:43:39.966Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:43:39.970Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:43:39.973Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:43:39.975Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:43:39.978Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:43:39.980Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:43:39.984Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:43:39.987Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:43:39.990Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:43:39.992Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:43:40.228Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:43:40.231Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:43:40.233Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:43:42.540Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:46:11.894Z] [INFO] [CORE] Starting Engine v4.8 (Super Strict)...
+[2025-12-01T09:46:11.913Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:46:11.915Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:46:12.112Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:46:12.116Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:46:12.121Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:46:12.631Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:46:12.635Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:46:12.641Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:46:12.644Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:46:12.647Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:46:12.650Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:46:12.654Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:46:12.658Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:46:12.661Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:46:12.664Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:46:12.668Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:46:12.991Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:46:12.994Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:46:12.995Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:46:16.563Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:47:13.600Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T09:48:18.288Z] [INFO] [CORE] Starting Engine v4.9 (Final)...
+[2025-12-01T09:48:18.306Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:48:18.309Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:48:18.452Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:48:18.455Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:48:18.460Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:48:18.911Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:48:18.916Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:48:18.920Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:48:18.924Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:48:18.928Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:48:18.932Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:48:18.935Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:48:18.938Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:48:18.944Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:48:18.948Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:48:18.951Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:48:19.436Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:48:19.439Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:48:19.440Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:48:21.796Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:48:29.483Z] [INFO] [CORE] Starting Engine v4.9 (Final)...
+[2025-12-01T09:48:29.501Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:48:29.502Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:48:29.634Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:48:29.636Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:48:29.639Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:48:29.948Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:48:29.952Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:48:29.956Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:48:29.959Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:48:29.961Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:48:29.964Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:48:29.967Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:48:29.970Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:48:29.973Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:48:29.975Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:48:29.978Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:48:30.238Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:48:30.240Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:48:30.241Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:48:34.698Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:56:07.560Z] [INFO] [CORE] Starting Engine v4.9 (Final)...
+[2025-12-01T09:56:07.582Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:56:07.585Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:56:07.757Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:56:07.760Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:56:07.762Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:56:08.100Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:56:08.104Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:56:08.108Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:56:08.111Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:56:08.114Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:56:08.117Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:56:08.120Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:56:08.124Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:56:08.127Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:56:08.130Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:56:08.133Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:56:08.479Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:56:08.482Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:56:08.483Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:56:10.719Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:56:15.713Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T09:56:29.974Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T09:57:22.327Z] [INFO] [CORE] Starting Engine v4.9 (Final)...
+[2025-12-01T09:57:22.345Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T09:57:22.347Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T09:57:22.523Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T09:57:22.527Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T09:57:22.529Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T09:57:22.870Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T09:57:22.874Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T09:57:22.879Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T09:57:22.882Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T09:57:22.885Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T09:57:22.887Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T09:57:22.891Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T09:57:22.894Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T09:57:22.898Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T09:57:22.901Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T09:57:22.904Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T09:57:23.233Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T09:57:23.236Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T09:57:23.237Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T09:57:25.578Z] [INFO] [CONN] WhatsApp Connected! 🚀
+[2025-12-01T09:57:30.787Z] [INFO] [CMD] s | fanra | OWNER
+[2025-12-01T10:02:21.915Z] [INFO] [CORE] Starting Engine v4.9 (Final)...
+[2025-12-01T10:02:21.943Z] [INFO] [DB] Users Loaded: 34
+[2025-12-01T10:02:21.945Z] [INFO] [DB] Settings Loaded.
+[2025-12-01T10:02:22.120Z] [DEBUG] [PLUGIN] Loaded: ai_chat v5.0.0-PURE
+[2025-12-01T10:02:22.126Z] [DEBUG] [PLUGIN] Loaded: antilink v6.0.0-LIMIT
+[2025-12-01T10:02:22.130Z] [DEBUG] [PLUGIN] Loaded: antispam v2.2.0-STRICT
+[2025-12-01T10:02:22.591Z] [DEBUG] [PLUGIN] Loaded: backup v1.0.0
+[2025-12-01T10:02:22.595Z] [DEBUG] [PLUGIN] Loaded: antiprofanity v7.1-FIXED
+[2025-12-01T10:02:22.600Z] [DEBUG] [PLUGIN] Loaded: delete_messages v1.0.0
+[2025-12-01T10:02:22.604Z] [DEBUG] [PLUGIN] Loaded: downloader v1.0.0
+[2025-12-01T10:02:22.607Z] [DEBUG] [PLUGIN] Loaded: group-admin v1.0.0
+[2025-12-01T10:02:22.611Z] [DEBUG] [PLUGIN] Loaded: menu v1.0.0
+[2025-12-01T10:02:22.614Z] [DEBUG] [PLUGIN] Loaded: ownerkey v1.0.0
+[2025-12-01T10:02:22.619Z] [DEBUG] [PLUGIN] Loaded: ping v1.0.0
+[2025-12-01T10:02:22.623Z] [DEBUG] [PLUGIN] Loaded: runtime v1.0.0
+[2025-12-01T10:02:22.626Z] [DEBUG] [PLUGIN] Loaded: self-identify v1.0.0
+[2025-12-01T10:02:22.631Z] [DEBUG] [PLUGIN] Loaded: settings v1.0.0
+[2025-12-01T10:02:23.024Z] [DEBUG] [PLUGIN] Loaded: sticker v1.0.0
+[2025-12-01T10:02:23.027Z] [DEBUG] [PLUGIN] Loaded: welcome v3.5.0-STABLE
+[2025-12-01T10:02:23.028Z] [INFO] [CORE] Engine Ready!
+[2025-12-01T10:02:25.083Z] [INFO] [CONN] WhatsApp Connected! 🚀

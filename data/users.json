@@ -13,9 +13,9 @@
     "id": "256594885476360",
     "phoneNumber": "256594885476360",
     "name": "L",
-    "interactions": 23,
+    "interactions": 33,
     "createdAt": "2025-11-30T13:01:47.535Z",
-    "lastSeen": "2025-11-30T13:19:26.263Z",
+    "lastSeen": "2025-12-01T10:00:05.211Z",
     "role": "member",
     "tokens": 10
   },
@@ -43,9 +43,9 @@
     "id": "180866022174958",
     "phoneNumber": "180866022174958",
     "name": "MaLuthuli✨️",
-    "interactions": 16,
+    "interactions": 20,
     "createdAt": "2025-11-30T13:02:02.460Z",
-    "lastSeen": "2025-11-30T13:15:52.534Z",
+    "lastSeen": "2025-12-01T09:59:54.813Z",
     "role": "member",
     "tokens": 10
   },
@@ -53,9 +53,9 @@
     "id": "263930622525541",
     "phoneNumber": "263930622525541",
     "name": "🫣",
-    "interactions": 25,
+    "interactions": 30,
     "createdAt": "2025-11-30T13:02:02.486Z",
-    "lastSeen": "2025-12-01T08:00:16.437Z",
+    "lastSeen": "2025-12-01T09:59:37.340Z",
     "role": "member",
     "tokens": 10
   },
@@ -63,9 +63,9 @@
     "id": "46424318300381",
     "phoneNumber": "46424318300381",
     "name": "😊",
-    "interactions": 2,
+    "interactions": 21,
     "createdAt": "2025-11-30T13:02:09.067Z",
-    "lastSeen": "2025-11-30T13:06:37.393Z",
+    "lastSeen": "2025-12-01T09:59:19.014Z",
     "role": "member",
     "tokens": 10
   },
@@ -93,9 +93,9 @@
     "id": "6790494347481",
     "phoneNumber": "6790494347481",
     "name": "fanra",
-    "interactions": 72,
+    "interactions": 96,
     "createdAt": "2025-11-30T13:02:39.301Z",
-    "lastSeen": "2025-12-01T07:48:36.615Z",
+    "lastSeen": "2025-12-01T10:01:51.743Z",
     "role": "owner",
     "tokens": 10,
     "antilink": {
@@ -117,9 +117,9 @@
     "id": "93845656195169",
     "phoneNumber": "93845656195169",
     "name": "Fanrabot",
-    "interactions": 59,
+    "interactions": 74,
     "createdAt": "2025-11-30T13:03:22.629Z",
-    "lastSeen": "2025-12-01T07:59:56.991Z",
+    "lastSeen": "2025-12-01T09:34:52.363Z",
     "role": "bot",
     "tokens": 10
   },
@@ -157,9 +157,9 @@
     "id": "186848458584295",
     "phoneNumber": "186848458584295",
     "name": "Dn🦖",
-    "interactions": 1,
+    "interactions": 2,
     "createdAt": "2025-11-30T13:15:12.520Z",
-    "lastSeen": "2025-11-30T13:15:12.520Z",
+    "lastSeen": "2025-12-01T09:58:42.784Z",
     "role": "member",
     "tokens": 10
   },
@@ -187,9 +187,9 @@
     "id": "6285788918217",
     "phoneNumber": "6285788918217",
     "name": "fanra",
-    "interactions": 1,
+    "interactions": 60,
     "createdAt": "2025-11-30T13:19:35.969Z",
-    "lastSeen": "2025-11-30T13:19:35.969Z",
+    "lastSeen": "2025-12-01T09:59:39.349Z",
     "role": "owner",
     "tokens": 10
   },
@@ -208,18 +208,18 @@
     "name": "User",
     "role": "bot",
     "tokens": 10,
-    "interactions": 30,
+    "interactions": 35,
     "createdAt": "2025-12-01T07:20:57.755Z",
-    "lastSeen": "2025-12-01T07:47:09.619Z"
+    "lastSeen": "2025-12-01T09:24:16.845Z"
   },
   "207181068632306": {
     "id": "207181068632306",
     "name": "Glory-tech",
     "role": "member",
     "tokens": 10,
-    "interactions": 5,
+    "interactions": 12,
     "createdAt": "2025-12-01T07:27:59.490Z",
-    "lastSeen": "2025-12-01T08:05:38.797Z"
+    "lastSeen": "2025-12-01T10:01:50.572Z"
   },
   "2208234008618": {
     "id": "2208234008618",
@@ -262,18 +262,18 @@
     "name": "apaja",
     "role": "member",
     "tokens": 10,
-    "interactions": 2,
+    "interactions": 4,
     "createdAt": "2025-12-01T07:56:22.676Z",
-    "lastSeen": "2025-12-01T07:56:45.293Z"
+    "lastSeen": "2025-12-01T09:35:19.387Z"
   },
   "12962865614957": {
     "id": "12962865614957",
     "name": "🇨🇳 _kimin_ 🇺🇿",
     "role": "member",
     "tokens": 10,
-    "interactions": 3,
+    "interactions": 32,
     "createdAt": "2025-12-01T07:59:53.431Z",
-    "lastSeen": "2025-12-01T08:05:50.532Z"
+    "lastSeen": "2025-12-01T10:01:08.788Z"
   },
   "144693354569918": {
     "id": "144693354569918",
@@ -301,5 +301,32 @@
     "interactions": 1,
     "createdAt": "2025-12-01T08:02:54.320Z",
     "lastSeen": "2025-12-01T08:02:54.320Z"
+  },
+  "178189703888989": {
+    "id": "178189703888989",
+    "name": "𒅌E̸R̸R̸O̸R̸𒋨",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 17,
+    "createdAt": "2025-12-01T09:28:55.463Z",
+    "lastSeen": "2025-12-01T09:43:57.262Z"
+  },
+  "62217634451700": {
+    "id": "62217634451700",
+    "name": "我现在是人了",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 35,
+    "createdAt": "2025-12-01T09:30:14.946Z",
+    "lastSeen": "2025-12-01T10:01:03.977Z"
+  },
+  "268719594946588": {
+    "id": "268719594946588",
+    "name": "ron",
+    "role": "member",
+    "tokens": 10,
+    "interactions": 5,
+    "createdAt": "2025-12-01T09:30:25.438Z",
+    "lastSeen": "2025-12-01T09:34:42.886Z"
   }
 }

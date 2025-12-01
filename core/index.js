@@ -1,5 +1,5 @@
 // core/index.js
-// FanraBot Core Engine — Strict Mode (Owner Limited)
+// FanraBot Core Engine — Final Fixed Version (V4.9)
 // ==================================================
 import fsPromises from 'fs/promises';
 import fs from 'fs';
@@ -19,7 +19,6 @@ class Logger {
     this.logDir = path.join(ROOT, 'logs');
     if (!fs.existsSync(this.logDir)) fs.mkdirSync(this.logDir, { recursive: true });
   }
-
   getTime() { return new Date().toLocaleTimeString('id-ID', { hour12: false }); }
   stripAnsi(str) { return String(str).replace(/\x1B\[[0-9;]*[mK]/g, ''); }
 
@@ -45,7 +44,6 @@ class Logger {
       fs.appendFileSync(path.join(this.logDir, fileName), line);
     } catch (e) {}
   }
-
   info(tag, ...msg) { this.print('info', tag, msg.join(' ')); }
   warn(tag, ...msg) { this.print('warn', tag, msg.join(' ')); }
   error(tag, ...msg) { this.print('error', tag, msg.join(' ')); }
@@ -63,7 +61,7 @@ class ConfigManager {
     try { this.bot = JSON.parse(await fsPromises.readFile(this.botConfigPath, 'utf-8')); } catch { this.bot = {}; }
     try { this.plugins = JSON.parse(await fsPromises.readFile(this.pluginConfigPath, 'utf-8')); } catch { this.plugins = {}; }
   }
-
+  // FIX: Mengembalikan fungsi .get() agar Sticker, dll berjalan
   get(key, defaultValue = null) {
     const keys = key.split('.');
     let current = this.bot;
@@ -214,30 +212,17 @@ export class BotCoreEngine {
             ctx.command = cmdName;
             ctx.args = parts.slice(1);
             
-            // Log hanya jika command diizinkan lewat
-            // this.logger.info('CMD', ...); // Dipindah ke bawah setelah filter
-
             // === [STRICT MODE FILTER] ===
-            // Definisi: Saat Mode OFF, hanya command ini yang boleh lewat (bahkan untuk Owner)
             const rescueCmds = ['setting', 'settings', 'mode', 'setup'];
 
-            // 1. Cek Apakah Mode Group sedang OFF?
+            // 1. Cek Mode Group
             if (ctx.isGroup && this.settings.groupMode === false) {
-                // Jika Owner, cek apakah commandnya 'setting'?
-                if (isOwner) {
-                    if (!rescueCmds.includes(cmdName)) return; // Blokir .ping, .menu, dll
-                } else {
-                    return; // Blokir Total untuk Member
-                }
+                if (!rescueCmds.includes(cmdName)) return; 
             }
 
-            // 2. Cek Apakah Mode Private sedang OFF?
+            // 2. Cek Mode Private
             if (!ctx.isGroup && this.settings.privateMode === false) {
-                if (isOwner) {
-                    if (!rescueCmds.includes(cmdName)) return; 
-                } else {
-                    return;
-                }
+                 if (!rescueCmds.includes(cmdName)) return;
             }
             // ============================
 
@@ -285,7 +270,7 @@ export class BotCoreEngine {
 
   async start() {
     console.clear();
-    this.logger.info('CORE', 'Starting Engine v4.8 (Super Strict)...');
+    this.logger.info('CORE', 'Starting Engine v4.9 (Final)...');
     await this.config.load();
     await this.loadDatabases(); 
     await this.loadPlugins();
